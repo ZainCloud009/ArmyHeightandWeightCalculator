@@ -20,6 +20,20 @@ document.addEventListener('DOMContentLoaded', () => {
   initMarineCorpsCalculator();
 });
 
+// Mobile Helper: Smoothly scroll to calculation results on mobile viewports
+function scrollToResultOnMobile(card) {
+  if (!card) return;
+  if (window.innerWidth <= 1024) {
+    setTimeout(() => {
+      const offsetTop = card.getBoundingClientRect().top + window.pageYOffset - 80;
+      window.scrollTo({
+        top: Math.max(0, offsetTop),
+        behavior: 'smooth'
+      });
+    }, 60);
+  }
+}
+
 /* ==========================================================================
    1. ARMY WHtR CALCULATOR (Main 2026 AR 600-9 Standard)
    ========================================================================== */
@@ -131,7 +145,12 @@ function initWhtrCalculator() {
     if (inp) inp.addEventListener('input', calculateWHtR);
   });
 
-  if (calcBtn) calcBtn.addEventListener('click', calculateWHtR);
+  if (calcBtn) {
+    calcBtn.addEventListener('click', () => {
+      calculateWHtR();
+      scrollToResultOnMobile(resultCard);
+    });
+  }
 
   if (resetBtn) {
     resetBtn.addEventListener('click', () => {
@@ -306,7 +325,12 @@ function initBodyFatCalculator() {
     if (inp) inp.addEventListener('input', calculateBodyFat);
   });
 
-  if (calcBtn) calcBtn.addEventListener('click', calculateBodyFat);
+  if (calcBtn) {
+    calcBtn.addEventListener('click', () => {
+      calculateBodyFat();
+      scrollToResultOnMobile(resultCard);
+    });
+  }
   if (resetBtn) {
     resetBtn.addEventListener('click', () => {
       form.reset();
@@ -432,7 +456,12 @@ function initOldHWCalculator() {
     if (inp) inp.addEventListener('input', calculateOldHW);
   });
 
-  if (calcBtn) calcBtn.addEventListener('click', calculateOldHW);
+  if (calcBtn) {
+    calcBtn.addEventListener('click', () => {
+      calculateOldHW();
+      scrollToResultOnMobile(resultCard);
+    });
+  }
   if (resetBtn) {
     resetBtn.addEventListener('click', () => {
       form.reset();
@@ -590,7 +619,12 @@ function initAftCalculator() {
     if (inp) inp.addEventListener('input', calculateAft);
   });
 
-  if (calcBtn) calcBtn.addEventListener('click', calculateAft);
+  if (calcBtn) {
+    calcBtn.addEventListener('click', () => {
+      calculateAft();
+      scrollToResultOnMobile(resultCard);
+    });
+  }
   if (resetBtn) {
     resetBtn.addEventListener('click', () => {
       form.reset();
@@ -755,7 +789,12 @@ function initAbcpCalculator() {
   [currentWt, targetWt, currentWst, targetWst, monthsInput].forEach(inp => {
     if (inp) inp.addEventListener('input', calculateAbcp);
   });
-  if (calcBtn) calcBtn.addEventListener('click', calculateAbcp);
+  if (calcBtn) {
+    calcBtn.addEventListener('click', () => {
+      calculateAbcp();
+      scrollToResultOnMobile(resultCard);
+    });
+  }
 }
 
 /* ==========================================================================
@@ -769,6 +808,7 @@ function initAirForceCalculator() {
   const inc = document.getElementById('af-inches');
   const waist = document.getElementById('af-waist');
   const resultCard = document.getElementById('af-result-card');
+  const calcBtn = document.getElementById('af-calc-btn');
 
   function calc() {
     const h = (parseFloat(ft ? ft.value : 0) || 0) * 12 + (parseFloat(inc ? inc.value : 0) || 0);
@@ -793,6 +833,12 @@ function initAirForceCalculator() {
   }
 
   [ft, inc, waist].forEach(i => { if (i) i.addEventListener('input', calc); });
+  if (calcBtn) {
+    calcBtn.addEventListener('click', () => {
+      calc();
+      scrollToResultOnMobile(resultCard);
+    });
+  }
 }
 
 /* ==========================================================================
@@ -806,6 +852,7 @@ function initMarineCorpsCalculator() {
   const inc = document.getElementById('mc-inches');
   const waist = document.getElementById('mc-waist');
   const resultCard = document.getElementById('mc-result-card');
+  const calcBtn = document.getElementById('mc-calc-btn');
 
   function calc() {
     const h = (parseFloat(ft ? ft.value : 0) || 0) * 12 + (parseFloat(inc ? inc.value : 0) || 0);
@@ -830,4 +877,10 @@ function initMarineCorpsCalculator() {
   }
 
   [ft, inc, waist].forEach(i => { if (i) i.addEventListener('input', calc); });
+  if (calcBtn) {
+    calcBtn.addEventListener('click', () => {
+      calc();
+      scrollToResultOnMobile(resultCard);
+    });
+  }
 }

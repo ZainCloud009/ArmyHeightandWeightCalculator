@@ -14,6 +14,11 @@
   <meta property="og:description" content="Free Army body fat percentage tape test calculator based on AR 600-9 standards. Check male and female body fat limits.">
   <meta property="og:site_name" content="Army Height and Weight Calculator">
 
+  <meta name="theme-color" content="#047857">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23059669'%3E%3Cpath d='M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5zm0 4.18l6 3.33v3.72c0 3.82-2.55 7.4-6 8.57-3.45-1.17-6-4.75-6-8.57v-3.72l6-3.33zM12 9a2.5 2.5 0 100 5 2.5 2.5 0 000-5z'/%3E%3C/svg%3E">
+  <link rel="preload" href="css/style.css" as="style">
   <link rel="stylesheet" href="css/style.css">
 
   <script type="application/ld+json">
@@ -158,11 +163,11 @@
               <label class="form-label">Height</label>
               <div class="input-row">
                 <div class="input-field-wrapper">
-                  <input type="number" id="bf-height-ft" class="form-input" placeholder="5" min="4" max="7" value="5">
+                  <input type="number" id="bf-height-ft" class="form-input" placeholder="5" min="4" max="7" value="5" inputmode="numeric">
                   <span class="input-suffix">ft</span>
                 </div>
                 <div class="input-field-wrapper">
-                  <input type="number" id="bf-height-in" class="form-input" placeholder="10" min="0" max="11" step="0.5" value="10">
+                  <input type="number" id="bf-height-in" class="form-input" placeholder="10" min="0" max="11" step="0.5" value="10" inputmode="decimal">
                   <span class="input-suffix">in</span>
                 </div>
               </div>
@@ -172,7 +177,7 @@
             <div class="form-group">
               <label for="bf-weight" class="form-label">Current Weight</label>
               <div class="input-field-wrapper">
-                <input type="number" id="bf-weight" class="form-input" placeholder="180" min="90" max="350" value="180">
+                <input type="number" id="bf-weight" class="form-input" placeholder="180" min="90" max="350" value="180" inputmode="decimal">
                 <span class="input-suffix">lbs</span>
               </div>
             </div>
@@ -184,7 +189,7 @@
                 <span class="form-hint">At navel (male) or natural waist (female)</span>
               </label>
               <div class="input-field-wrapper">
-                <input type="number" id="bf-waist" class="form-input" placeholder="36" min="15" max="70" step="0.1" value="35.5">
+                <input type="number" id="bf-waist" class="form-input" placeholder="36" min="15" max="70" step="0.1" value="35.5" inputmode="decimal">
                 <span class="input-suffix">in</span>
               </div>
             </div>
@@ -196,7 +201,7 @@
                 <span class="form-hint">Just below the larynx (Adam's apple)</span>
               </label>
               <div class="input-field-wrapper">
-                <input type="number" id="bf-neck" class="form-input" placeholder="16" min="10" max="30" step="0.1" value="16.0">
+                <input type="number" id="bf-neck" class="form-input" placeholder="16" min="10" max="30" step="0.1" value="16.0" inputmode="decimal">
                 <span class="input-suffix">in</span>
               </div>
             </div>
@@ -208,7 +213,7 @@
                 <span class="form-hint">Greatest protrusion of gluteal muscles</span>
               </label>
               <div class="input-field-wrapper">
-                <input type="number" id="bf-hip" class="form-input" placeholder="38" min="20" max="70" step="0.1" value="38.0">
+                <input type="number" id="bf-hip" class="form-input" placeholder="38" min="20" max="70" step="0.1" value="38.0" inputmode="decimal">
                 <span class="input-suffix">in</span>
               </div>
             </div>
@@ -397,7 +402,7 @@
     <span>Top</span>
   </button>
 
-  <script src="js/calculators.js"></script>
-  <script src="js/main.js"></script>
+  <script defer src="js/calculators.js"></script>
+  <script defer src="js/main.js"></script>
 </body>
 </html>

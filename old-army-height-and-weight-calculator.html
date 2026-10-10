@@ -14,6 +14,11 @@
   <meta property="og:description" content="Archived AR 600-9 height and weight screening tables. Kept for historical reference.">
   <meta property="og:site_name" content="Army Height and Weight Calculator">
 
+  <meta name="theme-color" content="#047857">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23059669'%3E%3Cpath d='M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5zm0 4.18l6 3.33v3.72c0 3.82-2.55 7.4-6 8.57-3.45-1.17-6-4.75-6-8.57v-3.72l6-3.33zM12 9a2.5 2.5 0 100 5 2.5 2.5 0 000-5z'/%3E%3C/svg%3E">
+  <link rel="preload" href="css/style.css" as="style">
   <link rel="stylesheet" href="css/style.css">
 
   <script type="application/ld+json">
@@ -151,11 +156,11 @@
               <label class="form-label">Height</label>
               <div class="input-row">
                 <div class="input-field-wrapper">
-                  <input type="number" id="old-height-ft" class="form-input" placeholder="5" min="4" max="7" value="5">
+                  <input type="number" id="old-height-ft" class="form-input" placeholder="5" min="4" max="7" value="5" inputmode="numeric">
                   <span class="input-suffix">ft</span>
                 </div>
                 <div class="input-field-wrapper">
-                  <input type="number" id="old-height-in" class="form-input" placeholder="10" min="0" max="11" value="10">
+                  <input type="number" id="old-height-in" class="form-input" placeholder="10" min="0" max="11" value="10" inputmode="decimal">
                   <span class="input-suffix">in</span>
                 </div>
               </div>
@@ -164,7 +169,7 @@
             <div class="form-group">
               <label for="old-weight" class="form-label">Body Weight</label>
               <div class="input-field-wrapper">
-                <input type="number" id="old-weight" class="form-input" placeholder="e.g. 185" min="80" max="350" value="185">
+                <input type="number" id="old-weight" class="form-input" placeholder="e.g. 185" min="80" max="350" value="185" inputmode="decimal">
                 <span class="input-suffix">lbs</span>
               </div>
             </div>
@@ -324,7 +329,7 @@
     <span>Top</span>
   </button>
 
-  <script src="js/calculators.js"></script>
-  <script src="js/main.js"></script>
+  <script defer src="js/calculators.js"></script>
+  <script defer src="js/main.js"></script>
 </body>
 </html>

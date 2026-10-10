@@ -14,6 +14,11 @@
   <meta property="og:description" content="Free Army Fitness Test scoring tool. Convert raw reps and times into official points.">
   <meta property="og:site_name" content="Army Height and Weight Calculator">
 
+  <meta name="theme-color" content="#047857">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23059669'%3E%3Cpath d='M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5zm0 4.18l6 3.33v3.72c0 3.82-2.55 7.4-6 8.57-3.45-1.17-6-4.75-6-8.57v-3.72l6-3.33zM12 9a2.5 2.5 0 100 5 2.5 2.5 0 000-5z'/%3E%3C/svg%3E">
+  <link rel="preload" href="css/style.css" as="style">
   <link rel="stylesheet" href="css/style.css">
 
   <script type="application/ld+json">
@@ -136,7 +141,7 @@
             <div class="input-row" style="margin-bottom: 1.25rem;">
               <div class="form-group" style="flex: 1; margin-bottom: 0;">
                 <label for="aft-age" class="form-label">Age</label>
-                <input type="number" id="aft-age" class="form-input" placeholder="25" min="17" max="65" value="25">
+                <input type="number" id="aft-age" class="form-input" placeholder="25" min="17" max="65" value="25" inputmode="numeric">
               </div>
               <div class="form-group" style="flex: 1; margin-bottom: 0;">
                 <label class="form-label">Gender</label>
@@ -154,7 +159,7 @@
                 <span class="form-hint">Trap bar (lbs)</span>
               </label>
               <div class="input-field-wrapper">
-                <input type="number" id="aft-mdl" class="form-input" placeholder="e.g. 240" min="100" max="350" step="10" value="240">
+                <input type="number" id="aft-mdl" class="form-input" placeholder="e.g. 240" min="100" max="350" step="10" value="240" inputmode="numeric">
                 <span class="input-suffix">lbs</span>
               </div>
             </div>
@@ -166,7 +171,7 @@
                 <span class="form-hint">2 minutes (reps)</span>
               </label>
               <div class="input-field-wrapper">
-                <input type="number" id="aft-hrp" class="form-input" placeholder="e.g. 38" min="0" max="70" value="38">
+                <input type="number" id="aft-hrp" class="form-input" placeholder="e.g. 38" min="0" max="70" value="38" inputmode="numeric">
                 <span class="input-suffix">reps</span>
               </div>
             </div>
@@ -178,7 +183,7 @@
                 <span class="form-hint">Time (mm:ss)</span>
               </label>
               <div class="input-field-wrapper">
-                <input type="text" id="aft-sdc" class="form-input" placeholder="1:48" value="1:48">
+                <input type="text" id="aft-sdc" class="form-input" placeholder="1:48" value="1:48" inputmode="numeric">
                 <span class="input-suffix">time</span>
               </div>
             </div>
@@ -190,7 +195,7 @@
                 <span class="form-hint">Hold time (mm:ss)</span>
               </label>
               <div class="input-field-wrapper">
-                <input type="text" id="aft-plk" class="form-input" placeholder="2:40" value="2:40">
+                <input type="text" id="aft-plk" class="form-input" placeholder="2:40" value="2:40" inputmode="numeric">
                 <span class="input-suffix">time</span>
               </div>
             </div>
@@ -202,7 +207,7 @@
                 <span class="form-hint">Time (mm:ss)</span>
               </label>
               <div class="input-field-wrapper">
-                <input type="text" id="aft-tmr" class="form-input" placeholder="15:30" value="15:30">
+                <input type="text" id="aft-tmr" class="form-input" placeholder="15:30" value="15:30" inputmode="numeric">
                 <span class="input-suffix">time</span>
               </div>
             </div>
@@ -363,7 +368,7 @@
     <span>Top</span>
   </button>
 
-  <script src="js/calculators.js"></script>
-  <script src="js/main.js"></script>
+  <script defer src="js/calculators.js"></script>
+  <script defer src="js/main.js"></script>
 </body>
 </html>

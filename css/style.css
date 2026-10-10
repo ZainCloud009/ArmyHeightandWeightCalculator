@@ -88,6 +88,7 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeSpeed;
 }
 
 body {
@@ -95,6 +96,15 @@ body {
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body.nav-open {
+  overflow: hidden;
+}
+
+button, a, input, select, textarea {
+  touch-action: manipulation;
 }
 
 img, svg {
@@ -328,14 +338,37 @@ button, input, select, textarea {
   color: var(--text-muted);
   cursor: pointer;
   border-radius: var(--radius-sm);
-  min-width: 44px;
-  min-height: 44px;
+  min-width: 48px;
+  min-height: 48px;
   align-items: center;
   justify-content: center;
+  touch-action: manipulation;
 }
 
 .mobile-nav-toggle:focus-visible {
   outline: 2px solid var(--primary-500);
+}
+
+/* Mobile Nav Backdrop Overlay */
+.nav-backdrop {
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 998;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-normal), visibility var(--transition-normal);
+  touch-action: none;
+}
+
+.nav-backdrop.is-active {
+  opacity: 1;
+  visibility: visible;
 }
 
 @media (max-width: 991px) {
@@ -347,8 +380,8 @@ button, input, select, textarea {
     background: #ffffff;
     flex-direction: column;
     align-items: stretch;
-    padding: 1.5rem;
-    gap: 0.5rem;
+    padding: 1.25rem;
+    gap: 0.4rem;
     border-bottom: 1px solid var(--color-border);
     box-shadow: var(--shadow-xl);
     transform: translateY(-100%);
@@ -357,12 +390,21 @@ button, input, select, textarea {
     transition: all var(--transition-normal);
     max-height: calc(100vh - var(--header-height));
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    z-index: 999;
   }
 
   .nav-menu.is-open {
     transform: translateY(0);
     opacity: 1;
     visibility: visible;
+  }
+
+  .nav-link {
+    min-height: 48px;
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-md);
   }
 
   .mobile-nav-toggle {
@@ -375,8 +417,16 @@ button, input, select, textarea {
     visibility: visible;
     box-shadow: none;
     border: none;
-    padding: 0.25rem 0 0.5rem 1rem;
+    padding: 0.25rem 0 0.5rem 0.5rem;
     transform: none;
+    background-color: var(--color-bg-subtle);
+    border-radius: var(--radius-md);
+    margin-top: 0.25rem;
+  }
+
+  .dropdown-item {
+    min-height: 44px;
+    padding: 0.65rem 0.75rem;
   }
 }
 
@@ -574,11 +624,13 @@ button, input, select, textarea {
   background-color: var(--color-bg-subtle);
   border: 1.5px solid var(--color-border);
   border-radius: var(--radius-md);
-  font-size: 1.05rem;
+  font-size: max(16px, 1.02rem);
   font-weight: 600;
   color: var(--text-main);
   transition: all var(--transition-fast);
   outline: none;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .form-input:focus {
@@ -605,7 +657,7 @@ button, input, select, textarea {
   background-color: var(--color-bg-subtle);
   border: 1.5px solid var(--color-border);
   border-radius: var(--radius-md);
-  font-size: 1rem;
+  font-size: max(16px, 1rem);
   font-weight: 600;
   color: var(--text-main);
   outline: none;
@@ -1380,5 +1432,180 @@ button, input, select, textarea {
   .calc-card, .result-card {
     box-shadow: none !important;
     border: 1px solid #ccc !important;
+  }
+}
+
+/* ==========================================================================
+   High-Performance Rendering & Advanced Mobile Responsive System
+   ========================================================================== */
+
+/* Defer offscreen rendering to accelerate FCP and LCP (Instant Loading) */
+.seo-article,
+.seo-callout,
+.site-footer,
+.feature-grid,
+.accordion,
+.cross-branch-banner {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 600px;
+}
+
+/* Custom Smooth Scrollbar for Mobile Tables */
+.table-responsive::-webkit-scrollbar {
+  height: 6px;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+  background: var(--color-bg-subtle);
+  border-radius: var(--radius-full);
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+  background: var(--primary-300);
+  border-radius: var(--radius-full);
+}
+
+.table-responsive::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-500);
+}
+
+/* Horizontal swipe hint */
+.table-scroll-hint {
+  display: none;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-subtle);
+  margin-bottom: 0.5rem;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Enhanced Mobile Responsive Queries */
+@media (max-width: 768px) {
+  .hero-section {
+    padding-top: 2.25rem;
+    padding-bottom: 2.25rem;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+    line-height: 1.25;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .calculator-grid {
+    margin-top: -1rem;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .table-scroll-hint {
+    display: flex;
+  }
+}
+
+@media (max-width: 640px) {
+  .calc-card, .result-card {
+    padding: 1.25rem 1rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .calc-card-title {
+    font-size: 1.15rem;
+  }
+
+  .calc-card-header {
+    margin-bottom: 1rem;
+    padding-bottom: 0.85rem;
+  }
+
+  /* Stack and enlarge buttons on mobile for easy thumb tapping */
+  .btn-group {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .btn-group .btn {
+    width: 100%;
+    min-height: 50px;
+  }
+
+  /* Wrap pill buttons neatly */
+  .radio-pill-group {
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 4px;
+  }
+
+  .radio-pill-btn {
+    flex: 1 1 calc(50% - 4px);
+    min-height: 46px;
+    padding: 0.5rem 0.5rem;
+    font-size: 0.825rem;
+    text-align: center;
+    white-space: normal;
+  }
+
+  /* Responsive result card */
+  .result-score-val {
+    font-size: 2.75rem;
+  }
+
+  .result-score-block {
+    padding: 1.25rem 0;
+    margin-bottom: 1.25rem;
+  }
+
+  .table-custom th,
+  .table-custom td {
+    padding: 0.65rem 0.75rem;
+    font-size: 0.825rem;
+  }
+
+  .back-to-top-btn {
+    bottom: 1rem;
+    right: 1rem;
+    padding: 0.65rem 0.85rem;
+    font-size: 0.75rem;
+  }
+
+  .seo-article {
+    padding: 1.5rem 1.15rem;
+    margin: 2rem 0;
+  }
+
+  .seo-article h2 {
+    font-size: 1.5rem;
+  }
+
+  .seo-article h3 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero-title {
+    font-size: 1.7rem;
+  }
+
+  .radio-pill-btn {
+    flex: 1 1 100%;
+  }
+
+  .input-row {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .result-score-val {
+    font-size: 2.25rem;
+  }
+
+  .container, .container-narrow {
+    padding-left: 0.85rem;
+    padding-right: 0.85rem;
   }
 }
